@@ -10,10 +10,9 @@
 
 ### 🎓 Academic & Student Information
 - **Student Name:** Rutuja Kamale
-- **Student ID:** 23102A0028
-- **Roll Number:** 27
+- **Roll Number:** 23102A0028
 - **Project Title:** Git-Based Farmer Training Registration Platform
-- **Course:** DevOps Engineering Laboratory
+- **Course:** DevOps 
 
 ---
 
@@ -115,4 +114,4 @@ java -jar target/farmer-registration-platform-1.0.0.jar
 | `GET` | `/actuator/health` | DevOps system health probe |
 
 ---
-*Developed by Rutuja Kamale (23102A0028, Roll 27) for DevOps Engineering Laboratory.*
+*Developed by Rutuja Kamale (23102A0028) for DevOpsLaboratory.*
