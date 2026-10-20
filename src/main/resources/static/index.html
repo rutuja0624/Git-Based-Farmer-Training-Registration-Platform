@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Training Registration Platform | Capacity Building Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand">
+        <div class="brand-icon">🌱</div>
+        <span>AgriTrain Platform</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link active">Registration</a></li>
+        <li><a href="/tracker" class="nav-link">Track Status</a></li>
+        <li><a href="/admin" class="nav-link nav-btn">Coordinator Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <!-- Hero Banner -->
+    <header class="hero">
+      <span class="hero-tag">Empowering Indian Agriculture</span>
+      <h1>Git-Based Farmer Training Registration Platform</h1>
+      <p>Reserve your seat in specialized government and KVK certified workshops. Learn organic methods, micro-irrigation, modern pest control, and drone-assisted farming.</p>
+      <div class="hero-actions">
+        <a href="#registerSection" class="btn btn-secondary">Register for Training</a>
+        <a href="/tracker" class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.15);">Track Existing Application</a>
+      </div>
+    </header>
+
+    <div class="grid-2" id="registerSection">
+      
+      <!-- Registration Form Card -->
+      <section class="card">
+        <h2 class="card-title">📝 Farmer Registration Form</h2>
+        <p class="card-desc">Enter your personal, contact, and landholding details to enroll in an upcoming agricultural training session.</p>
+
+        <form id="regForm">
+          <div class="form-group">
+            <label class="form-label" for="trainingSelect">Select Training Program <span class="required">*</span></label>
+            <select id="trainingSelect" class="form-control" required>
+              <option value="">Loading available training programs...</option>
+            </select>
+            <!-- Dynamic Training Preview -->
+            <div id="trainingPreview" class="training-preview">
+              <h4 id="prevTitle" style="color:var(--primary); font-size:1.05rem; margin-bottom:0.25rem;"></h4>
+              <p id="prevDesc" style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.6rem;"></p>
+              <div class="training-meta">
+                <span class="training-meta-label">👨‍🏫 Instructor:</span>
+                <span id="prevInstructor" style="font-weight:600;"></span>
+                <span class="training-meta-label">📍 Venue:</span>
+                <span id="prevLocation" style="font-weight:600;"></span>
+                <span class="training-meta-label">📅 Schedule:</span>
+                <span id="prevDate" style="font-weight:600; color:var(--primary);"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fullName">Full Name (as per Aadhaar / Kissan Card) <span class="required">*</span></label>
+            <input type="text" id="fullName" class="form-control" placeholder="e.g. Ramesh Baburao Patil" required minlength="2">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="mobileNumber">Mobile Number <span class="required">*</span></label>
+              <input type="tel" id="mobileNumber" class="form-control" placeholder="10-digit mobile number" required pattern="[0-9]{10}" maxlength="10">
+              <span class="form-help">SMS & Status alerts will be sent here.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address (Optional)</label>
+              <input type="email" id="email" class="form-control" placeholder="e.g. ramesh@example.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="village">Village / Taluka <span class="required">*</span></label>
+              <input type="text" id="village" class="form-control" placeholder="e.g. Khed" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="district">District <span class="required">*</span></label>
+              <input type="text" id="district" class="form-control" placeholder="e.g. Pune" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="landSize">Cultivated Landholding (in Acres) <span class="required">*</span></label>
+            <input type="number" id="landSize" class="form-control" placeholder="e.g. 4.5" step="0.1" min="0.1" required>
+            <span class="form-help">Helps us curate batch materials suited to your farm size.</span>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+            Submit Application
+          </button>
+        </form>
+      </section>
+
+      <!-- Information & Guidelines Card -->
+      <aside class="card" style="background: linear-gradient(to bottom, #ffffff, #f8fafc);">
+        <h2 class="card-title">ℹ️ Training Program Guidelines</h2>
+        <p class="card-desc">What you need to know about enrollment and participation.</p>
+
+        <div style="display:flex; flex-direction:column; gap:1.25rem;">
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="background:var(--primary-light); color:var(--primary); padding:0.6rem; border-radius:var(--radius-md); font-size:1.2rem;">📜</div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700;">Government Certified</h4>
+              <p style="font-size:0.85rem; color:var(--text-muted);">Participants completing the full session receive an authorized certification recognized by agricultural boards.</p>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="background:var(--accent-light); color:var(--accent); padding:0.6rem; border-radius:var(--radius-md); font-size:1.2rem;">⏱️</div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700;">Zero Fee Registration</h4>
+              <p style="font-size:0.85rem; color:var(--text-muted);">All training modules are 100% subsidized under the Agri-Skills Mission. Training kits and lunch are provided.</p>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <div style="background:var(--info-light); color:var(--info); padding:0.6rem; border-radius:var(--radius-md); font-size:1.2rem;">📲</div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700;">Real-Time Status Tracking</h4>
+              <p style="font-size:0.85rem; color:var(--text-muted);">Use your generated Registration ID or phone number to check approval and seat allocation anytime.</p>
+            </div>
+          </div>
+
+          <div style="background: var(--surface-alt); padding: 1.25rem; border-radius: var(--radius-md); border: 1px dashed var(--border); margin-top: 1rem;">
+            <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">DevOps Project MVP Features:</h4>
+            <ul style="font-size: 0.82rem; color: var(--text-muted); padding-left: 1.2rem; line-height: 1.6;">
+              <li>Strict input validation & phone duplication prevention</li>
+              <li>Unique tracking ID generation (<code>REG-XXXXXX</code>)</li>
+              <li>Automated approval/confirmation coordinator workflow</li>
+              <li>Production Actuator health monitoring (<code>/actuator/health</code>)</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Registration Success Modal -->
+  <div id="successModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-icon">🎉</div>
+      <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:0.5rem;">Application Submitted!</h3>
+      <p style="color:var(--text-muted); font-size:0.92rem;">
+        Thank you, <strong id="modalFarmerName"></strong>. Your registration application has been received and is currently under review by the training coordinator.
+      </p>
+
+      <div class="code-box">
+        <span id="modalCode">REG-000000</span>
+        <button type="button" onclick="copyRegistrationCode()" class="btn btn-sm btn-outline" title="Copy Registration ID">📋</button>
+      </div>
+
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1.5rem;">
+        Please save this unique Registration ID. You can use it along with your phone number to track your confirmation status.
+      </p>
+
+      <div style="display:flex; gap:0.75rem; justify-content:center;">
+        <button type="button" class="btn btn-outline" onclick="closeSuccessModal()">Close</button>
+        <a id="modalTrackLink" href="/tracker" class="btn btn-primary">Track My Status</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>AgriTrain Platform &copy; 2026. Git-Based Farmer Training Registration Platform | Developed with Spring Boot 3 & DevOps Practices.</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

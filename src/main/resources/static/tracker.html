@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Status Tracker | Farmer Training Platform</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand">
+        <div class="brand-icon">🌱</div>
+        <span>AgriTrain Platform</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Registration</a></li>
+        <li><a href="/tracker" class="nav-link active">Track Status</a></li>
+        <li><a href="/admin" class="nav-link nav-btn">Coordinator Portal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <div style="max-width: 800px; margin: 0 auto;">
+      
+      <!-- Tracker Search Card -->
+      <section class="card" style="margin-bottom: 2rem;">
+        <h2 class="card-title">🔍 Track Your Registration Status</h2>
+        <p class="card-desc">Check the real-time status of your training workshop application using your Registration ID or 10-digit mobile number.</p>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <input type="text" id="trackQuery" class="form-control" style="flex: 1; min-width: 250px;" placeholder="Enter Registration ID (e.g. REG-100201) or Mobile Number">
+          <button type="button" id="trackBtn" class="btn btn-primary">
+            Check Status
+          </button>
+        </div>
+
+        <div style="margin-top: 1rem; display: flex; gap: 0.5rem; align-items: center; font-size: 0.85rem; color: var(--text-muted);">
+          <span>Quick Demo IDs:</span>
+          <a href="javascript:void(0)" onclick="document.getElementById('trackQuery').value='REG-100201'; trackRegistrationStatus('REG-100201');" style="color:var(--primary); font-family:monospace; font-weight:600;">REG-100201 (Approved)</a>
+          <span>•</span>
+          <a href="javascript:void(0)" onclick="document.getElementById('trackQuery').value='REG-100202'; trackRegistrationStatus('REG-100202');" style="color:var(--accent); font-family:monospace; font-weight:600;">REG-100202 (Pending)</a>
+        </div>
+      </section>
+
+      <!-- Tracker Results Container -->
+      <section id="trackerResults">
+        <div class="card" style="text-align: center; padding: 3rem 1.5rem; color: var(--text-muted);">
+          <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📋</div>
+          <h3 style="color: var(--text-main);">Ready to Track</h3>
+          <p style="font-size: 0.9rem; margin-top: 0.25rem;">Enter your Registration ID or registered mobile number above to see current review progress, venue details, and batch confirmation.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>AgriTrain Platform &copy; 2026. Git-Based Farmer Training Registration Platform | Developed with Spring Boot 3 & DevOps Practices.</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
