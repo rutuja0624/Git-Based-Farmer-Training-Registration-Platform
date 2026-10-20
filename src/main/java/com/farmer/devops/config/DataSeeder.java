@@ -108,6 +108,20 @@ public class DataSeeder implements CommandLineRunner {
             r3.setStatus(RegistrationStatus.COMPLETED);
             r3.setRemarks("Workshop completed; certificate issued");
             registrationRepo.save(r3);
+
+            Registration r4 = new Registration(
+                    "REG-100204",
+                    "Kavita Gaikwad",
+                    "9765432109",
+                    "kavita@droneagri.in",
+                    "Kalmeshwar",
+                    "Nagpur",
+                    3.0,
+                    t4
+            );
+            r4.setStatus(RegistrationStatus.PENDING);
+            r4.setRemarks("Applied for smart drone pilot scholarship");
+            registrationRepo.save(r4);
         }
     }
 }

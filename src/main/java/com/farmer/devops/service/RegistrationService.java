@@ -21,6 +21,7 @@ import java.util.Map;
 
 @Service
 @Transactional
+@SuppressWarnings("null")
 public class RegistrationService {
 
     private final RegistrationRepository registrationRepository;

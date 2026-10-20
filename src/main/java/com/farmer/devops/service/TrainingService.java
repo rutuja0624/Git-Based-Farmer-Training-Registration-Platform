@@ -13,6 +13,7 @@ import java.util.Map;
 
 @Service
 @Transactional(readOnly = true)
+@SuppressWarnings("null")
 public class TrainingService {
 
     private final TrainingRepository trainingRepository;

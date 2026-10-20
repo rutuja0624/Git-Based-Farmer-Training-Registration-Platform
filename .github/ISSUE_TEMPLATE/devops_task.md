@@ -1,33 +1,37 @@
 ---
-name: DevOps Task
-about: Track infrastructure, CI/CD, testing, or deployment tasks
-title: '[DEVOPS] '
+name: DevOps Curriculum Task Tracker
+about: Track one of the 15 official DevOps laboratory tasks from branching to release
+title: '[TASK] '
 labels: devops
-assignees: ''
+assignees: 'rutuja0624'
 
 ---
 
-**Task Title & Description**
-A clear summary of the DevOps engineering task.
+### 📋 Academic Project Reference
+- **Student Name:** Rutuja Kamale
+- **Student ID:** 23102A0028 | **Roll No:** 27
+- **Project:** Git-Based Farmer Training Registration Platform
 
-**Curriculum Task Reference**
-- [ ] Task 4: Git & GitHub Repository Initialization
-- [ ] Task 5: Feature Development with Branching
-- [ ] Task 6: MVP Completion and Git Collaboration
-- [ ] Task 7: Jenkins Installation & CI Job
-- [ ] Task 8: Pipeline as Code (Jenkinsfile)
-- [ ] Task 9: Selenium Test Design & Local Execution
-- [ ] Task 10: Continuous Testing in Jenkins
-- [ ] Task 11: Docker Image & Container Lifecycle
-- [ ] Task 12: Jenkins-Docker Continuous Deployment
-- [ ] Task 13: Configuration Management (Ansible/Puppet)
-- [ ] Task 14: Automated Provisioning & Rollback
-- [ ] Task 15: End-to-End Release & Viva
+---
 
-**Implementation Steps**
-1. [ ] Step 1
-2. [ ] Step 2
-3. [ ] Step 3
+### 🎯 Curriculum Task Target
+- [ ] **Task 5:** Feature Development with Branching (First core workflow on `feature/registration-workflow`)
+- [ ] **Task 6:** MVP Completion and Git Collaboration (Conflict resolution, tagging, release baseline)
+- [ ] **Task 7:** Jenkins Installation and Continuous Integration Job (Maven build automation)
+- [ ] **Task 8:** Pipeline as Code and Server Deployment (`Jenkinsfile` staging to Tomcat/Nginx)
+- [ ] **Task 9:** Selenium Test Design and Local Execution (Automated browser test suites)
+- [ ] **Task 10:** Continuous Testing in Jenkins (Automated quality gate with Selenium reports)
+- [ ] **Task 11:** Docker Image and Container Lifecycle (Multi-stage `Dockerfile` & container lifecycle)
+- [ ] **Task 12:** Jenkins-Docker Continuous Deployment (Auto-build & run versioned containers)
+- [ ] **Task 13:** Configuration Management Script (Ansible playbook / Puppet manifests)
+- [ ] **Task 14:** Automated Provisioning and Reliability Validation (Idempotency & rollback demo)
+- [ ] **Task 15:** Final End-to-End Release, Documentation and Viva (Complete pipeline demonstration)
 
-**Deliverables & Evidence Required**
-- Output logs, screenshots, or configuration files.
+---
+
+### 🛠️ Execution Checklist & Deliverables
+1. [ ] Branch created as per branch policy (`feature/...`)
+2. [ ] Implementation completed and verified locally
+3. [ ] Automated tests pass cleanly (`mvn test`)
+4. [ ] Conventional commits recorded
+5. [ ] Deliverables generated and pushed to GitHub
