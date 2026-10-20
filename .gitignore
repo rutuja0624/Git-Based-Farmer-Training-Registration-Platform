@@ -1,0 +1,25 @@
+# Target build directories
+target/
+*.class
+
+# IDE and Editor directories
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# Logs and databases
+*.log
+*.db
+h2-data/
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
