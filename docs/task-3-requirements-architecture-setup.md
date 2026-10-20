@@ -1,6 +1,11 @@
 # Task 3: Requirements, Architecture and Technology Setup
 ## Project: Git-Based Farmer Training Registration Platform
 
+**Student Details:**
+- **Name:** Rutuja Kamale
+- **Roll Number:** 23102A0028
+- **Course:** DevOps
+
 ---
 
 ### 1. Software Requirements Specification (SRS) Summary

@@ -9,7 +9,8 @@ assignees: 'rutuja0624'
 
 ### 📋 Academic Project Reference
 - **Student Name:** Rutuja Kamale
-- **Student ID:** 23102A0028 | **Roll No:** 27
+- **Roll Number:** 23102A0028
+- **Course:** DevOps
 - **Project:** Git-Based Farmer Training Registration Platform
 
 ---

@@ -24,6 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(RegistrationController.class)
+@SuppressWarnings("null")
 class RegistrationControllerTest {
 
     @Autowired
@@ -59,7 +60,8 @@ class RegistrationControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.data.registrationCode").value("REG-555123"))
-                .andExpect(jsonPath("$.data.fullName").value("Santosh Rao"));
+                .andExpect(jsonPath("$.data.fullName").value("Santosh Rao"))
+                .andExpect(jsonPath("$.data.farmerCategory").value("SEMI_MEDIUM"));
     }
 
     @Test

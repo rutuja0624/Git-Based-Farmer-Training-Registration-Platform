@@ -96,6 +96,7 @@ class RegistrationServiceTest {
         assertThat(result.getMobileNumber()).isEqualTo("9876543210");
         assertThat(result.getStatus()).isEqualTo(RegistrationStatus.PENDING);
         assertThat(result.getRegistrationCode()).startsWith("REG-");
+        assertThat(result.getFarmerCategory()).isEqualTo("SEMI_MEDIUM");
         verify(registrationRepository, times(1)).save(any(Registration.class));
     }
 
