@@ -1,6 +1,5 @@
 # Branch Naming Rules & Git Branch Policy
-## Project: Git-Based Farmer Training Registration Platform
-**Author:** Rutuja Kamale (Student ID: 23102A0028, Roll: 27)
+**Author:** Rutuja Kamale (Roll No.: 23102A0028, Course: DevOps)
 
 ---
 

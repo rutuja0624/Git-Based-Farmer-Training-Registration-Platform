@@ -267,7 +267,7 @@ function renderTrackerResults(records) {
         </div>
         <div>
           <div style="font-size:0.8rem; color:var(--text-muted);">Registered Landholding</div>
-          <div style="font-weight:600;">${reg.landSizeAcres} Acres</div>
+          <div style="font-weight:600;">${reg.landSizeAcres} Acres <span class="badge" style="background:#e0f2fe; color:#0369a1; font-size:0.72rem; margin-left:0.3rem;">${reg.farmerCategory || 'SMALLHOLDER'}</span></div>
         </div>
         <div>
           <div style="font-size:0.8rem; color:var(--text-muted);">Applied Workshop</div>
@@ -348,7 +348,7 @@ async function loadAdminRegistrations() {
             <strong>${reg.fullName}</strong><br>
             <small style="color:var(--text-muted);">${reg.mobileNumber}</small>
           </td>
-          <td>${reg.village}, ${reg.district}<br><small>${reg.landSizeAcres} Acres</small></td>
+          <td>${reg.village}, ${reg.district}<br><small>${reg.landSizeAcres} Acres <span class="badge" style="background:#e0f2fe; color:#0369a1; font-size:0.7rem; padding:0.12rem 0.45rem;">${reg.farmerCategory || 'SMALLHOLDER'}</span></small></td>
           <td>
             <span style="font-weight:600; color:var(--text-main);">${reg.trainingProgram.title}</span><br>
             <small style="color:var(--text-muted);">${reg.trainingProgram.trainingDate}</small>

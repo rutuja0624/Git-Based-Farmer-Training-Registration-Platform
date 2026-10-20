@@ -35,6 +35,9 @@ public class Registration {
     @Column(name = "land_size_acres", nullable = false)
     private Double landSizeAcres;
 
+    @Column(name = "farmer_category", length = 30)
+    private String farmerCategory = "SMALLHOLDER";
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private RegistrationStatus status = RegistrationStatus.PENDING;
@@ -55,6 +58,7 @@ public class Registration {
     public Registration() {
         this.registeredAt = LocalDateTime.now();
         this.statusUpdatedAt = LocalDateTime.now();
+        this.farmerCategory = "SMALLHOLDER";
     }
 
     public Registration(String registrationCode, String fullName, String mobileNumber, String email,
@@ -68,9 +72,17 @@ public class Registration {
         this.district = district;
         this.landSizeAcres = landSizeAcres;
         this.trainingProgram = trainingProgram;
+        this.farmerCategory = computeFarmerCategory(landSizeAcres);
         this.status = RegistrationStatus.PENDING;
         this.registeredAt = LocalDateTime.now();
         this.statusUpdatedAt = LocalDateTime.now();
+    }
+
+    public static String computeFarmerCategory(Double acres) {
+        if (acres == null || acres <= 0) return "MARGINAL";
+        if (acres < 2.5) return "SMALLHOLDER";
+        if (acres <= 5.0) return "SEMI_MEDIUM";
+        return "LARGE";
     }
 
     public Long getId() {
@@ -168,6 +180,14 @@ public class Registration {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public String getFarmerCategory() {
+        return farmerCategory;
+    }
+
+    public void setFarmerCategory(String farmerCategory) {
+        this.farmerCategory = farmerCategory;
     }
 
     public TrainingProgram getTrainingProgram() {

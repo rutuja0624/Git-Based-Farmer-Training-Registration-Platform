@@ -1,6 +1,11 @@
 # Task 2: Agile Planning and DevOps Workflow
 ## Project: Git-Based Farmer Training Registration Platform
 
+**Student Details:**
+- **Name:** Rutuja Kamale
+- **Roll Number:** 23102A0028
+- **Course:** DevOps
+
 ---
 
 ### 1. User Stories & Acceptance Criteria (Gherkin Syntax)

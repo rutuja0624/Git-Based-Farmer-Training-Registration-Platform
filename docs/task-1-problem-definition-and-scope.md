@@ -1,6 +1,11 @@
 # Task 1: Problem Definition and Scope
 ## Project: Git-Based Farmer Training Registration Platform
 
+**Student Details:**
+- **Name:** Rutuja Kamale
+- **Roll Number:** 23102A0028
+- **Course:** DevOps
+
 ---
 
 ### 1. Executive Summary & Real-Time Need

@@ -26,7 +26,7 @@ Below is the approved 15-task sequence tracking our development, testing, CI/CD,
 | **Task 2** | **Agile Planning and DevOps Workflow:** User stories, Gherkin acceptance criteria, product backlog, 15-task Kanban/Scrum plan, Definition of Done (DoD), and DevOps lifecycle diagram. | ✅ Completed | [Task 2 Deliverable Doc](docs/task-2-agile-devops-workflow.md) |
 | **Task 3** | **Requirements, Architecture and Technology Setup:** SRS summary, use-case diagram, architecture diagram, data model/API list, and working local setup (Java 21, Spring Boot, Maven, H2 DB, Tomcat). | ✅ Completed | [Task 3 Deliverable Doc](docs/task-3-requirements-architecture-setup.md), Source Code |
 | **Task 4** | **Git and GitHub Repository Initialization:** Create GitHub repository, add README, `.gitignore`, folder structure, issue templates, branch naming rules, meaningful initial commits, and branch policy. | ✅ Completed | [Task 4 Deliverable Doc](docs/task-4-git-github-initialization.md), [Branch Policy](docs/branch-policy.md) |
-| **Task 5** | **Feature Development with Branching:** Implement the first core workflow on a feature branch (`feature/registration-workflow`). Use add, commit, push, pull, logs, pull request, review, and merge to develop. | ⏳ Next | Working Feature 1, feature branch, PR & merge evidence |
+| **Task 5** | **Feature Development with Branching:** Implement the first core workflow on a feature branch (`feature/task-5-farmer-registration`). Use add, commit, push, pull, logs, pull request, review, and merge to develop. | ✅ Completed | [Task 5 Deliverable Doc](docs/task-5-feature-development-with-branching.md), PR & Merge |
 | **Task 6** | **MVP Completion and Git Collaboration:** Implement remaining MVP functions: registration form, validation, approval/confirmation, participant listing, status tracking. Demonstrate second feature branch, conflict creation/resolution, and version tagging. | ⏳ Next | Functional MVP, resolved conflict, release tag, updated backlog |
 | **Task 7** | **Jenkins Installation and Continuous Integration Job:** Install and configure Jenkins. Connect GitHub repo, create Maven build job triggered by commit/polling, archive build artefact. | ⏳ Next | Configured Jenkins job, build log, trigger evidence, archived JAR |
 | **Task 8** | **Pipeline as Code and Server Deployment:** Create Jenkinsfile with checkout, build, package, and deploy stages. Deploy build to Tomcat/Nginx, parameterize environment setting. | ⏳ Next | Jenkinsfile, pipeline run log, deployed app URL/screenshot |
@@ -114,4 +114,4 @@ java -jar target/farmer-registration-platform-1.0.0.jar
 | `GET` | `/actuator/health` | DevOps system health probe |
 
 ---
-*Developed by Rutuja Kamale (23102A0028) for DevOpsLaboratory.*
+*Developed by Rutuja Kamale (Roll Number: 23102A0028) for DevOps.*

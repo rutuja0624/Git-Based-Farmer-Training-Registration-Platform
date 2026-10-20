@@ -3,9 +3,8 @@
 
 **Student Details:**
 - **Name:** Rutuja Kamale
-- **Student ID:** 23102A0028
-- **Roll Number:** 27
-- **Course:** DevOps Engineering Laboratory
+- **Roll Number:** 23102A0028
+- **Course:** DevOps
 
 ---
 
