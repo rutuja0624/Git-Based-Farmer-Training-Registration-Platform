@@ -170,4 +170,23 @@ class RegistrationServiceTest {
         assertThat(updated.getRemarks()).isEqualTo("Verified documents");
         verify(registrationRepository, times(1)).save(sampleRegistration);
     }
+
+    @Test
+    @DisplayName("Should retrieve registrations filtered by district")
+    void testGetRegistrationsByDistrict_Success() {
+        when(registrationRepository.findAll()).thenReturn(List.of(sampleRegistration));
+
+        List<Registration> result = registrationService.getRegistrationsByDistrict("Pune");
+
+        assertThat(result).hasSize(1);
+        assertThat(result.get(0).getDistrict()).isEqualTo("Pune");
+    }
+
+    @Test
+    @DisplayName("Should throw ValidationException when district parameter is blank")
+    void testGetRegistrationsByDistrict_Blank_ThrowsException() {
+        assertThatThrownBy(() -> registrationService.getRegistrationsByDistrict("   "))
+                .isInstanceOf(com.farmer.devops.exception.ValidationException.class)
+                .hasMessageContaining("District parameter cannot be empty");
+    }
 }

@@ -134,6 +134,16 @@ public class RegistrationService {
         return metrics;
     }
 
+    @Transactional(readOnly = true)
+    public List<Registration> getRegistrationsByDistrict(String district) {
+        if (district == null || district.trim().isEmpty()) {
+            throw new ValidationException("District parameter cannot be empty.");
+        }
+        return registrationRepository.findAll().stream()
+                .filter(r -> r.getDistrict() != null && r.getDistrict().equalsIgnoreCase(district.trim()))
+                .toList();
+    }
+
     private String generateUniqueRegistrationCode() {
         for (int i = 0; i < 10; i++) {
             int codeNumber = 100000 + random.nextInt(900000);
