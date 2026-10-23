@@ -1,0 +1,61 @@
+---
+# ==============================================================================
+# Ansible Playbook: Automated Rollback & Disaster Recovery (Task 14)
+# Project: Git-Based Farmer Training Registration Platform
+# Author: Rutuja Kamale (Roll No: 23102A0028)
+# ==============================================================================
+
+- name: Rollback Application to Previous Stable Release
+  hosts: web_servers
+  become: yes
+  gather_facts: no
+
+  vars:
+    app_name: farmer-registration-platform
+    app_version: 1.0.0
+    app_user: farmerapp
+    app_group: farmerapp
+    app_port: 8085
+    app_bin_dir: /opt/farmer-platform/bin
+    app_backup_dir: /opt/farmer-platform/backups
+
+  tasks:
+    - name: 1. Check if backup artifact exists
+      stat:
+        path: "{{ app_backup_dir }}/{{ app_name }}-{{ app_version }}.jar.bak"
+      register: backup_file
+      failed_when: not backup_file.stat.exists
+
+    - name: 2. Stop currently failing service instance
+      systemd:
+        name: farmer-platform
+        state: stopped
+
+    - name: 3. Restore backup artifact to binary directory
+      copy:
+        src: "{{ app_backup_dir }}/{{ app_name }}-{{ app_version }}.jar.bak"
+        dest: "{{ app_bin_dir }}/{{ app_name }}-{{ app_version }}.jar"
+        remote_src: yes
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: '0755'
+
+    - name: 4. Restart restored application service
+      systemd:
+        name: farmer-platform
+        state: started
+
+    - name: 5. Verify post-rollback service recovery health probe
+      uri:
+        url: "http://127.0.0.1:{{ app_port }}/actuator/health"
+        method: GET
+        status_code: 200
+        return_content: yes
+      register: rollback_health
+      until: rollback_health.status == 200 and 'UP' in rollback_health.content
+      retries: 15
+      delay: 2
+
+    - name: 6. Output rollback confirmation
+      debug:
+        msg: "Rollback completed successfully! Application restored to stable state on port {{ app_port }}."

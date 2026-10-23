@@ -1,0 +1,75 @@
+---
+# ==============================================================================
+# Ansible Playbook: Deploy Application Artifact & Health Validation (Task 14)
+# Project: Git-Based Farmer Training Registration Platform
+# Author: Rutuja Kamale (Roll No: 23102A0028)
+# ==============================================================================
+
+- name: Deploy Farmer Registration Platform Artifact to Provisioned Node
+  hosts: web_servers
+  become: yes
+  gather_facts: no
+
+  vars:
+    app_name: farmer-registration-platform
+    app_version: 1.0.0
+    app_user: farmerapp
+    app_group: farmerapp
+    app_port: 8085
+    app_bin_dir: /opt/farmer-platform/bin
+    app_backup_dir: /opt/farmer-platform/backups
+    artifact_src: "{{ playbook_dir }}/../target/{{ app_name }}-{{ app_version }}.jar"
+
+  tasks:
+    - name: 1. Ensure backup directory exists
+      file:
+        path: "{{ app_backup_dir }}"
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: '0750'
+
+    - name: 2. Backup current running artifact if exists
+      copy:
+        src: "{{ app_bin_dir }}/{{ app_name }}-{{ app_version }}.jar"
+        dest: "{{ app_backup_dir }}/{{ app_name }}-{{ app_version }}.jar.bak"
+        remote_src: yes
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+      ignore_errors: yes
+
+    - name: 3. Copy newly built executable JAR to binary directory
+      copy:
+        src: "{{ artifact_src }}"
+        dest: "{{ app_bin_dir }}/{{ app_name }}-{{ app_version }}.jar"
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: '0755'
+      notify: restart farmer service
+
+    - name: 4. Ensure systemd service is active and running
+      systemd:
+        name: farmer-platform
+        state: started
+        enabled: yes
+
+    - name: 5. Execute post-deployment health check probe
+      uri:
+        url: "http://127.0.0.1:{{ app_port }}/actuator/health"
+        method: GET
+        status_code: 200
+        return_content: yes
+      register: health_response
+      until: health_response.status == 200 and 'UP' in health_response.content
+      retries: 15
+      delay: 3
+
+    - name: 6. Display verified health status
+      debug:
+        msg: "Application successfully verified healthy on port {{ app_port }}! Status: UP"
+
+  handlers:
+    - name: restart farmer service
+      systemd:
+        name: farmer-platform
+        state: restarted
