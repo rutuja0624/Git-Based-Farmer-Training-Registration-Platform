@@ -71,6 +71,10 @@ for ($i = 1; $i -le 15; $i++) {
     }
 }
 
+if (-not $healthy) {
+    Write-Warning ">>> [HEALTHCHECK TIMEOUT] Container did not report healthy within timeout."
+}
+
 # 8. Stop Container
 Write-Host "`n>>> [STEP 8: STOP] Demonstrating graceful container stop..." -ForegroundColor Yellow
 docker stop $ContainerName

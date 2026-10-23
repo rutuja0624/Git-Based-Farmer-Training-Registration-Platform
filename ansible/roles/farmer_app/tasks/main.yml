@@ -1,0 +1,79 @@
+---
+# ==============================================================================
+# Tasks: farmer_app role
+# ==============================================================================
+
+- name: 1. Ensure system package cache is updated
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  when: ansible_os_family == "Debian"
+
+- name: 2. Install required packages (Java 21, curl, wget, ufw)
+  package:
+    name: "{{ java_packages }}"
+    state: present
+
+- name: 3. Create dedicated system group for farmer application
+  group:
+    name: "{{ app_group }}"
+    state: present
+    system: yes
+
+- name: 4. Create dedicated unprivileged system user
+  user:
+    name: "{{ app_user }}"
+    group: "{{ app_group }}"
+    system: yes
+    shell: /usr/sbin/nologin
+    create_home: no
+    state: present
+
+- name: 5. Create application directory hierarchy
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: '0755'
+  loop:
+    - "{{ app_root }}"
+    - "{{ app_bin_dir }}"
+    - "{{ app_config_dir }}"
+
+- name: 6. Create application logs directory with strict permissions
+  file:
+    path: "{{ app_log_dir }}"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_group }}"
+    mode: '0750'
+
+- name: 7. Deploy Systemd service unit file
+  template:
+    src: farmer-platform.service.j2
+    dest: /etc/systemd/system/farmer-platform.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - reload systemd
+    - restart farmer app
+
+- name: 8. Configure firewall rule for application port
+  ufw:
+    rule: allow
+    port: "{{ app_port }}"
+    proto: tcp
+  when: ansible_os_family == "Debian"
+
+- name: 9. Ensure firewall is enabled
+  ufw:
+    state: enabled
+  when: ansible_os_family == "Debian"
+
+- name: 10. Enable and start farmer-platform service
+  systemd:
+    name: farmer-platform
+    state: started
+    enabled: yes

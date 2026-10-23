@@ -1,0 +1,13 @@
+---
+# ==============================================================================
+# Handlers: farmer_app role
+# ==============================================================================
+
+- name: reload systemd
+  systemd:
+    daemon_reload: yes
+
+- name: restart farmer app
+  systemd:
+    name: farmer-platform
+    state: restarted

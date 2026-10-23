@@ -1,0 +1,31 @@
+---
+# ==============================================================================
+# Ansible Playbook: Target Node Configuration & Server Provisioning
+# Project: Git-Based Farmer Training Registration Platform (Task 13 & 14)
+# Author: Rutuja Kamale (Roll No: 23102A0028, Course: DevOps)
+# ==============================================================================
+
+- name: Provision and Configure Production Host for Farmer Platform
+  hosts: web_servers
+  become: yes
+  gather_facts: yes
+
+  vars:
+    app_name: farmer-registration-platform
+    app_version: 1.0.0
+    app_user: farmerapp
+    app_group: farmerapp
+    app_port: 8085
+    app_root: /opt/farmer-platform
+    app_bin_dir: /opt/farmer-platform/bin
+    app_config_dir: /opt/farmer-platform/config
+    app_log_dir: /var/log/farmer-platform
+    spring_profile: prod
+    java_packages:
+      - openjdk-21-jre-headless
+      - curl
+      - wget
+      - ufw
+
+  roles:
+    - farmer_app

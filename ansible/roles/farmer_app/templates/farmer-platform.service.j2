@@ -1,0 +1,22 @@
+[Unit]
+Description=Git-Based Farmer Training Registration Platform Service
+Documentation=https://github.com/rutuja0624/Git-Based-Farmer-Training-Registration-Platform
+After=network.target syslog.target
+
+[Service]
+Type=simple
+User={{ app_user }}
+Group={{ app_group }}
+WorkingDirectory={{ app_root }}
+Environment="SERVER_PORT={{ app_port }}"
+Environment="SPRING_PROFILES_ACTIVE={{ spring_profile }}"
+ExecStart=/usr/bin/java -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -Dspring.profiles.active={{ spring_profile }} -Dserver.port={{ app_port }} -jar {{ app_bin_dir }}/{{ app_name }}-{{ app_version }}.jar
+Restart=always
+RestartSec=10
+StandardOutput=append:{{ app_log_dir }}/stdout.log
+StandardError=append:{{ app_log_dir }}/stderr.log
+LimitNOFILE=65536
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
