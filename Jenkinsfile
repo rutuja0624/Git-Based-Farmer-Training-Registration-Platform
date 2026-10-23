@@ -71,23 +71,42 @@ pipeline {
             }
         }
 
-        stage('Compile & Test') {
+        stage('Unit & Controller Testing') {
             steps {
                 echo "======================================================================"
-                echo ">>> [STAGE: TEST] Compiling Code & Executing Automated Unit Tests..."
+                echo ">>> [STAGE: UNIT TESTS] Compiling Code & Executing Unit/API Tests..."
                 echo "======================================================================"
                 script {
                     if (isUnix()) {
-                        sh 'mvn clean test'
+                        sh 'mvn test -Dtest=RegistrationControllerTest,RegistrationServiceTest'
                     } else {
                         bat '''
                             @echo off
-                            call mvn clean test || "C:\\DevTools\\apache-maven-3.9.16\\bin\\mvn.cmd" clean test
+                            call mvn test -Dtest=RegistrationControllerTest,RegistrationServiceTest || "C:\\DevTools\\apache-maven-3.9.16\\bin\\mvn.cmd" test -Dtest=RegistrationControllerTest,RegistrationServiceTest
                         '''
                     }
                 }
             }
         }
+
+        stage('Automated UI Testing (Selenium Quality Gate)') {
+            steps {
+                echo "======================================================================"
+                echo ">>> [STAGE: SELENIUM QUALITY GATE] Executing Selenium E2E UI Journeys..."
+                echo "======================================================================"
+                script {
+                    if (isUnix()) {
+                        sh 'mvn test -Dtest=FarmerRegistrationUiTest'
+                    } else {
+                        bat '''
+                            @echo off
+                            call mvn test -Dtest=FarmerRegistrationUiTest || "C:\\DevTools\\apache-maven-3.9.16\\bin\\mvn.cmd" test -Dtest=FarmerRegistrationUiTest
+                        '''
+                    }
+                }
+            }
+        }
+
 
         stage('Package Executable JAR') {
             steps {
@@ -170,9 +189,10 @@ pipeline {
     post {
         always {
             echo "======================================================================"
-            echo ">>> [POST-BUILD] Recording Test Results..."
+            echo ">>> [POST-BUILD] Recording Test Results & Archiving Screenshots..."
             echo "======================================================================"
             junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+            archiveArtifacts artifacts: 'docs/screenshots/*.png, target/selenium-screenshots/*.png', allowEmptyArchive: true
         }
         success {
             echo "======================================================================"
