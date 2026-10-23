@@ -1,0 +1,24 @@
+# Version Control
+.git
+.gitignore
+.github
+
+# IDE & Editor Configs
+.idea
+.vscode
+*.iml
+.project
+.classpath
+.settings
+
+# Documentation and Media
+docs/
+*.md
+
+# Local Deployment & Runtime Artifacts
+deploy/
+logs/
+*.log
+*.tmp
+*.bak
+h2-data/

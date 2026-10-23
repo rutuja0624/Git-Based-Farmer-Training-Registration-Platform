@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  farmer-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: farmer-registration-platform:1.0.0
+    container_name: farmer-platform-app
+    restart: unless-stopped
+    ports:
+      - "8085:8085"
+    environment:
+      - SERVER_PORT=8085
+      - SPRING_PROFILES_ACTIVE=dev
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8085/actuator/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 25s
