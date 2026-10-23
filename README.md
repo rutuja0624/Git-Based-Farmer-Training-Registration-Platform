@@ -36,7 +36,8 @@ Below is the approved 15-task sequence tracking our development, testing, CI/CD,
 | **Task 12** | **Jenkins-Docker Continuous Deployment:** Extend Jenkins pipeline to build versioned Docker image, publish to registry, deploy fresh container automatically after successful tests. | ✅ Completed | [Task 12 Deliverable Doc](docs/task-12-jenkins-docker-continuous-deployment.md), [Jenkinsfile CD](Jenkinsfile) |
 | **Task 13** | **Configuration Management Script:** Identify server prerequisites (packages, users, folders, files, ports, services). Create Ansible playbook or Puppet manifest to configure target node. | ✅ Completed | [Task 13 Deliverable Doc](docs/task-13-configuration-management-script.md), [Ansible](ansible/), [Puppet](puppet/) |
 | **Task 14** | **Automated Provisioning and Reliability Validation:** Provision clean target environment using Ansible/Puppet. Deploy app, demonstrate idempotency, health check, test rollback/recovery. | ✅ Completed | [Task 14 Deliverable Doc](docs/task-14-automated-provisioning-reliability-validation.md), [Deploy Artifact](ansible/deploy-artifact.yml), [Rollback](ansible/rollback.yml) |
-| **Task 15** | **Final End-to-End Release, Documentation and Viva:** Complete DevOps workflow execution (Git ➔ Jenkins ➔ Selenium ➔ Docker ➔ Ansible). Technical docs, troubleshooting guide, viva presentation. | ⏳ Next | Final repository, live demo, complete report, presentation & viva |
+| **Task 15** | **Final End-to-End Release, Documentation and Viva:** Complete DevOps workflow execution (Git ➔ Jenkins ➔ Selenium ➔ Docker ➔ Ansible). Technical docs, troubleshooting guide, viva presentation. | ✅ Completed | [Task 15 Deliverable Doc](docs/task-15-final-end-to-end-release-viva.md), Tag `v2.0.0-FINAL` |
+
 
 ---
 
