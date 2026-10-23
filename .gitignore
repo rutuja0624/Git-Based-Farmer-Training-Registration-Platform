@@ -10,7 +10,9 @@ target/
 .classpath
 .settings/
 
-# Logs and databases
+# Deployment and runtime logs
+deploy/
+logs/
 *.log
 *.db
 h2-data/
