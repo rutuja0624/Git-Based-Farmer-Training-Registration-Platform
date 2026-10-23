@@ -57,7 +57,7 @@ docker logs --tail 25 $ContainerName
 # 7. Health Probe Verification
 Write-Host "`n>>> [STEP 7: HEALTH PROBE] Testing application endpoint on http://localhost:$HostPort/actuator/health..." -ForegroundColor Yellow
 $healthy = $false
-for ($i = 1; $i -le 15; $i++) {
+for ($i = 1; $i -le 15 -and -not $healthy; $i++) {
     Start-Sleep -Seconds 2
     try {
         $res = Invoke-RestMethod -Uri "http://localhost:$HostPort/actuator/health" -TimeoutSec 3 -ErrorAction Stop
